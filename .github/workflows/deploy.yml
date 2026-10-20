@@ -12,10 +12,10 @@ jobs:
       - uses: actions/checkout@v7
       - name: Update apt cache
         run: |
-          apt-get update
+          sudo apt-get update
       - name: Install zola
         run: |
-          apt-get install zola
+          sudo apt-get install zola
       - name: Build Website
         run: |
           zola build
