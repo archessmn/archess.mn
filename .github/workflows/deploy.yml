@@ -7,15 +7,15 @@ name: Build & Deploy Website
 
 jobs:
   build:
-    name: zbrox/zola-deploy-action
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
-      - uses: awalsh128/cache-apt-pkgs-action@v1
-        with:
-          packages: zola
-          version: 1.0
-
+      - name: Update apt cache
+        run: |
+          apt-get update
+      - name: Install zola
+        run: |
+          apt-get install zola
       - name: Build Website
         run: |
           zola build
