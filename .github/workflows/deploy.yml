@@ -10,15 +10,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
-      - name: Update apt cache
-        run: |
-          sudo apt-get update
-      - name: Install zola
-        run: |
-          sudo apt-get install zola
+      - uses: cachix/install-nix-action@v31
       - name: Build Website
         run: |
-          zola build
+          nix develop .# --command zola build
 
       - name: Upload static files as artifact
         id: deployment
