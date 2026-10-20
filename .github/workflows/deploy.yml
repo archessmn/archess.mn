@@ -15,6 +15,10 @@ jobs:
         run: |
           nix develop .# --command zola build
 
+      - name: Set CNAME
+        run: |
+          echo "archess.mn" > public/CNAME
+
       - name: Upload static files as artifact
         id: deployment
         uses: actions/upload-pages-artifact@v5
