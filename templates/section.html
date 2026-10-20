@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<header>
+  <div class="title">
+    {% if section.extra.img %}
+    <img src="{{ section.extra.img }}">
+    {% endif %}
+
+    <!-- {% if section.extra.html_title %}
+    <h1>{{ section.extra.html_title }}</h1>
+    {% elif section.title %}
+    <h1>{{ section.title }}</h1>
+    {% endif %} -->
+    <img src="/gay.svg" width="312" alt="archessmn" />
+
+    {% if section.summary %}
+    <h4>{{ section.summary }}</h4>
+    {% endif %}
+  </div>
+
+  <div class="nav">
+    <a class="nav-link" href="/">home</a>
+    <a class="nav-link" href="/about">about</a>
+    <a class="nav-link" href="/">home</a>
+    <a class="nav-link" href="/">home</a>
+  </div>
+</header>
+
+<div class="content">
+  {{ section.content | safe }}
+
+  {% if section.pages and section.path != "/" %}
+  <ul>
+    {% for page in section.pages %}
+    <li>
+      <a href="{{ page.path | safe }}">{{ page.title }}</a><br />
+      {% if page.summary %}
+      <span class="section-desc">&gt;&nbsp;{{ page.summary | safe }}</span>
+      {% endif %}
+    </li>
+    {% endfor %}
+  </ul>
+  <br>
+  {% endif %}
+</div>
+
+{% endblock %}

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>
+    {%- if page -%}
+    {%- if page.extra.page_title -%}
+    {{ page.extra.page_title }}
+    {%- elif page.title -%}
+    {{ page.title }} | archess.mn
+    {%- else -%}
+    archess.mn
+    {%- endif -%}
+    {% elif section %}
+    {%- if section.extra.page_title -%}
+    {{ section.extra.page_title }}
+    {%- elif section.title -%}
+    {{ section.title }} | archess.mn
+    {%- else -%}
+    archess.mn
+    {%- endif -%}
+    {%- endif -%}
+  </title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+
+<body>
+  <section class="section">
+    <div class="container">
+      {% block content %} {% endblock content %}
+    </div>
+  </section>
+</body>
+
+</html>
